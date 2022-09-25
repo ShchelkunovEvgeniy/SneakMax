@@ -527,7 +527,7 @@ window.quiz = new Quiz('.quiz-form .quiz-questions', quizData, {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nouislider */ "../../../../../../../node_modules/nouislider/dist/nouislider.js");
+/* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nouislider */ "../../../../node_modules/nouislider/dist/nouislider.js");
 /* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(nouislider__WEBPACK_IMPORTED_MODULE_0__);
 
 const rangeSlider = document.getElementById('range-slider');
@@ -1222,10 +1222,10 @@ class GraphModal {
 
 /***/ }),
 
-/***/ "../../../../../../../node_modules/nouislider/dist/nouislider.js":
-/*!***********************************************************************!*\
-  !*** ../../../../../../../node_modules/nouislider/dist/nouislider.js ***!
-  \***********************************************************************/
+/***/ "../../../../node_modules/nouislider/dist/nouislider.js":
+/*!**************************************************************!*\
+  !*** ../../../../node_modules/nouislider/dist/nouislider.js ***!
+  \**************************************************************/
 /***/ (function(__unused_webpack_module, exports) {
 
 (function (global, factory) {
