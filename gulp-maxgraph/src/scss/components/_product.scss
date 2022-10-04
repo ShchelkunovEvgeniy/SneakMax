@@ -16,6 +16,10 @@
     opacity: 0;
     visibility: hidden;
     transition: .3s all ease;
+
+    @include mobile {
+      opacity: 1;
+    }
   }
 
   &__image {

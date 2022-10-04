@@ -17,7 +17,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/map */ "./src/js/components/map.js");
 /* harmony import */ var _components_map__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_map__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_products__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/products */ "./src/js/components/products.js");
-console.log('components');
+/* harmony import */ var _components_burger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/burger */ "./src/js/components/burger.js");
+/* harmony import */ var _components_burger__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_burger__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -140,6 +142,45 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/js/components/burger.js":
+/*!*************************************!*\
+  !*** ./src/js/components/burger.js ***!
+  \*************************************/
+/***/ (() => {
+
+function disableScroll() {
+  let pagePosition = window.scrollY;
+  document.body.classList.add('disable-scroll');
+  document.body.dataset.position = pagePosition;
+  document.body.style.top = -pagePosition + 'px';
+}
+
+function enableScroll() {
+  let pagePosition = parseInt(document.body.dataset.position, 10);
+  document.body.style.top = 'auto';
+  document.body.classList.remove('disable-scroll');
+  window.scroll({
+    top: pagePosition,
+    left: 0
+  });
+  document.body.removeAttribute('data-position');
+}
+
+const burger = document.querySelector('.burger');
+const menu = document.querySelector('.header__nav');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('burger--active');
+  menu.classList.toggle('header__nav--active');
+
+  if (burger.classList.contains('burger--active')) {
+    disableScroll();
+  } else {
+    enableScroll();
+  }
+});
+
+/***/ }),
+
 /***/ "./src/js/components/faq.js":
 /*!**********************************!*\
   !*** ./src/js/components/faq.js ***!
@@ -199,7 +240,7 @@ __webpack_require__.r(__webpack_exports__);
 const catalogList = document.querySelector('.catalog-list');
 const catalogMore = document.querySelector('.catalog__more');
 const prodModal = document.querySelector('[data-graph-target="prod-modal"] .graph-modal__content');
-let prodQuantity = 5;
+let prodQuantity = 6;
 let dataLength = null;
 
 const normalPrice = str => {
@@ -208,18 +249,16 @@ const normalPrice = str => {
 
 if (catalogList) {
   const loadProducts = function () {
-    let quantity = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
+    let quantity = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 6;
     fetch('../data/data.json').then(response => {
       return response.json();
     }).then(data => {
-      console.log(data);
       dataLength = data.length;
       catalogList.innerHTML = '';
 
       for (let i = 0; i < dataLength; i++) {
         if (i < quantity) {
           let item = data[i];
-          console.log(item);
           catalogList.innerHTML += "\n              <li class=\"catalog-list__item\">\n                <article class=\"product\">\n                  <div class=\"product__image\">\n                    <img src=\"".concat(item.mainImage, "\" alt=\"").concat(item.title, "\">\n                    <div class=\"product__btns\">\n                      <button class=\"btn-reset product__btn\" data-graph-path=\"prod-modal\" data-id=\"").concat(item.id, "\" aria-label=\"\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u043E \u0442\u043E\u0432\u0430\u0440\u0435\">\n                        <svg>\n                          <use xlink:href=\"img/sprite.svg#eye\"></use>\n                        </svg>\n                      </button>\n                      <button class=\"btn-reset product__btn\" aria-label=\"\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0442\u043E\u0432\u0430\u0440 \u0432 \u043A\u043E\u0440\u0437\u0438\u043D\u0443\">\n                        <svg>\n                          <use xlink:href=\"img/sprite.svg#cart\"></use>\n                        </svg>\n                      </button>\n                    </div>\n                  </div>\n                  <h3 class=\"product__title\">").concat(item.title, "</h3>\n                  <span class=\"product__price\">").concat(normalPrice(item.price), " \u0440</span>\n                </article>\n              </li>\n                  ");
         }
       }
@@ -608,8 +647,6 @@ const mobileCheck = () => {
 * Released under the WTFPL license
 * http://sam.zoy.org/wtfpl/
 */
-console.log('clamp is ready');
-
 (function () {
   window.$clamp = function (c, d) {
     function s(a, b) {

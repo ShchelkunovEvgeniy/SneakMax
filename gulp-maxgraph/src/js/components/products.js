@@ -2,7 +2,7 @@ import GraphModal from 'graph-modal';
 const catalogList = document.querySelector('.catalog-list');
 const catalogMore = document.querySelector('.catalog__more');
 const prodModal = document.querySelector('[data-graph-target="prod-modal"] .graph-modal__content');
-let prodQuantity = 5;
+let prodQuantity = 6;
 let dataLength = null;
 
 const normalPrice = (str) => {
@@ -10,13 +10,12 @@ const normalPrice = (str) => {
 };
 
 if (catalogList) {
-  const loadProducts = (quantity = 5) => {
+  const loadProducts = (quantity = 6) => {
     fetch('../data/data.json')
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
 
         dataLength = data.length;
         catalogList.innerHTML = '';
@@ -24,7 +23,6 @@ if (catalogList) {
         for (let i = 0; i < dataLength; i++) {
           if (i < quantity) {
             let item = data[i];
-            console.log(item);
 
             catalogList.innerHTML += `
               <li class="catalog-list__item">

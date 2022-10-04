@@ -1,46 +1,70 @@
 .hero {
-   position: relative;
-   height: 528px;
-   padding: 100px 0;
-   background-color: var(--color-eastbay);
+  position: relative;
+  height: 528px;
+  padding: 100px 0;
+  background-color: var(--color-eastbay);
 
-   &__container {
-      position: relative;
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      height: 100%;
-      color: var(--color-white);
-   }
+  &__container {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    color: var(--color-white);
+  }
 
-   &__bg-text {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      font-family: 'Intro', sans-serif;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 200px;
-      line-height: 200px;
-      color: rgba(255, 255, 255, 0.12);
-      transform: translate(-50%, -50%);
-      margin-top: 50px;
-      margin-left: 50px;
-      z-index: 0;
-   }
+  &__bg-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-family: 'Intro', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 200px;
+    line-height: 200px;
+    color: rgba(255, 255, 255, 0.12);
+    transform: translate(-50%, -50%);
+    margin-top: 50px;
+    margin-left: 50px;
+    z-index: 0;
 
-   &__title {
-      font: 700 36px / 140% var(--font-family);
-      margin-bottom: var(--second-offset);
-      max-width: 50%;
-   }
+    @include tablet {
+      display: none;
+    }
+  }
 
-   &__descr {
-      margin: 0;
-      font: var(--middle-book);
-      max-width: calc(50% - 100px);
-      margin-bottom: var(--main-offset);
-   }
+  &__title {
+    font: 700 36px / 140% var(--font-family);
+    margin-bottom: var(--second-offset);
+    max-width: 50%;
+
+    @include small-tablet {
+      line-height: 42px;
+      max-width: 100%;
+    }
+  }
+
+  &__descr {
+    margin: 0;
+    font: var(--middle-book);
+    max-width: calc(50% - 100px);
+    margin-bottom: var(--main-offset);
+
+    @include small-tablet {
+      max-width: 100%;
+    }
+  }
+
+  &__btn {
+    @include small-tablet {
+      margin: 0px auto;
+    }
+  }
+
+  @include small-tablet {
+    height: auto;
+    padding-bottom: var(--main-offset);
+  }
 }

@@ -67,9 +67,11 @@ p {
 .btn--primary.focus-visible:focus {
   background-color: var(--color-accent-hover);
 }
+
 .btn--secondary.focus-visible:focus {
   background-color: var(--color-main-hover);
 }
+
 .btn--thirdly.focus-visible:focus {
   background-color: var(--color-main-hover);
   color: var(--color-white);
@@ -139,6 +141,10 @@ p {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--grid-gap);
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .btn {
@@ -146,6 +152,7 @@ p {
   border-radius: 4px;
   font: var(--middle-regular);
   transition: .3s all ease;
+  outline: none;
 
   &--primary {
     background-color: var(--color-accent);
@@ -157,6 +164,9 @@ p {
       }
     }
 
+    &:active {
+      background-color: var(--color-btn-active);
+    }
   }
 
   &--secondary {
@@ -169,6 +179,9 @@ p {
       }
     }
 
+    &:active {
+      background-color: var(--color-btn-active);
+    }
   }
 
   &--thirdly {
@@ -184,7 +197,9 @@ p {
       }
     }
 
-
+    &:active {
+      background-color: var(--color-btn-active);
+    }
   }
 }
 

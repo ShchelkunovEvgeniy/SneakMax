@@ -5,6 +5,10 @@
     border-radius: 4px;
     padding: var(--main-offset) 100px;
     background-color: var(--color-bg);
+
+    @include small-tablet {
+      padding: var(--main-offset);
+    }
   }
 
   &__title {
@@ -38,21 +42,43 @@
     grid-template-columns: repeat(3, 1fr);
     gap: var(--second-offset) 70px;
     padding-bottom: var(--second-offset);
+
+    @include small-tablet {
+      gap: var(--second-offset);
+    }
+
+    @include mobile {
+      display: block;
+    }
   }
 
   &__item {
     img {
       margin-bottom: var(--small-offset);
     }
+
+    @include mobile {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
   }
 
   &__count {
     font: var(--middle-book);
     color: var(--color-jumbo);
+
+    @include mobile {
+      margin-bottom: var(--main-offset);
+    }
   }
 
   &__label {
     display: inline-block;
+
+    @include mobile {
+      width: 100%;
+    }
   }
 
   &__message {
@@ -64,6 +90,10 @@
     resize: none;
     border-radius: 4px;
     color: var(--color-cameo);
+
+    @include mobile {
+      width: 100%;
+    }
   }
 }
 
@@ -73,6 +103,11 @@
   justify-content: space-between;
   border-top: 1px solid var(--color-jumbo);
   padding-top: var(--second-offset);
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .last-question {
@@ -94,6 +129,11 @@
     font-size: 36px;
     line-height: 140%;
     color: var(--color-white);
+
+    @include mobile {
+      font-size: 24px;
+      line-height: 30px;
+    }
   }
 
   &__descr {
@@ -112,15 +152,28 @@
     &:nth-of-type(2) {
       margin-bottom: var(--second-offset);
     }
+
+    @include mobile {
+      max-width: none;
+    }
   }
 
   &__btn {
     min-width: 220px;
+
+    @include mobile {
+      min-width: auto;
+      width: 100%;
+    }
   }
 
   &__declorate {
     position: absolute;
     top: -5px;
     right: -185px;
+
+    @include small-tablet {
+      display: none;
+    }
   }
 }
