@@ -24,7 +24,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import './components/modals';
+
+// import './components/modals';
 
 /***/ }),
 
@@ -39,56 +40,74 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions/mobile-check */ "./src/js/functions/mobile-check.js");
 // Данный файл - лишь собрание подключений готовых компонентов.
 // Рекомендуется создавать отдельный файл в папке components и подключать все там
+
 // Определение операционной системы на мобильных
 
-console.log((0,_functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__.mobileCheck)()); // Определение ширины экрана
+console.log((0,_functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__.mobileCheck)());
+
+// Определение ширины экрана
 // import { isMobile, isTablet, isDesktop } from './functions/check-viewport';
 // if (isDesktop()) {
 //   console.log('...')
 // }
+
 // Троттлинг функции (для ресайза, ввода в инпут, скролла и т.д.)
 // import { throttle } from './functions/throttle';
 // let yourFunc = () => { console.log('throttle') };
 // let func = throttle(yourFunc);
 // window.addEventListener('resize', func);
+
 // Фикс фулскрин-блоков
 // import './functions/fix-fullheight';
+
 // Реализация бургер-меню
 // import { burger } from './functions/burger';
+
 // Реализация остановки скролла (не забудьте вызвать функцию)
 // import { disableScroll } from './functions/disable-scroll';
+
 // Реализация включения скролла (не забудьте вызвать функцию)
 // import { enableScroll } from './functions/enable-scroll';
+
 // Реализация модального окна
 // import GraphModal from 'graph-modal';
 // const modal = new GraphModal();
+
 // Реализация табов
 // import GraphTabs from 'graph-tabs';
 // const tabs = new GraphTabs('tab');
+
 // Получение высоты шапки сайта (не забудьте вызвать функцию)
 // import { getHeaderHeight } from './functions/header-height';
+
 // Подключение плагина кастом-скролла
 // import 'simplebar';
+
 // Подключение плагина для позиционирования тултипов
 // import { createPopper, right} from '@popperjs/core';
 // createPopper(el, tooltip, {
 //   placement: 'right'
 // });
+
 // Подключение свайпера
 // import Swiper, { Navigation, Pagination } from 'swiper';
 // Swiper.use([Navigation, Pagination]);
 // const swiper = new Swiper(el, {
 //   slidesPerView: 'auto',
 // });
+
 // Подключение анимаций по скроллу
 // import AOS from 'aos';
 // AOS.init();
+
 // Подключение параллакса блоков при скролле
 // import Rellax from 'rellax';
 // const rellax = new Rellax('.rellax');
+
 // Подключение плавной прокрутки к якорям
 // import SmoothScroll from 'smooth-scroll';
 // const scroll = new SmoothScroll('a[href*="#"]');
+
 // Подключение событий свайпа на мобильных
 // import 'swiped-events';
 // document.addEventListener('swiped', function(e) {
@@ -96,11 +115,14 @@ console.log((0,_functions_mobile_check__WEBPACK_IMPORTED_MODULE_0__.mobileCheck)
 //   console.log(e.detail);
 //   console.log(e.detail.dir);
 // });
+
 // import { validateForms } from './functions/validate-forms';
 // const rules1 = [...];
+
 // const afterForm = () => {
 //   console.log('Произошла отправка, тут можно писать любые действия');
 // };
+
 // validateForms('.form-1', rules1, afterForm);
 
 /***/ }),
@@ -154,7 +176,6 @@ function disableScroll() {
   document.body.dataset.position = pagePosition;
   document.body.style.top = -pagePosition + 'px';
 }
-
 function enableScroll() {
   let pagePosition = parseInt(document.body.dataset.position, 10);
   document.body.style.top = 'auto';
@@ -165,13 +186,11 @@ function enableScroll() {
   });
   document.body.removeAttribute('data-position');
 }
-
 const burger = document.querySelector('.burger');
 const menu = document.querySelector('.header__nav');
 burger.addEventListener('click', () => {
   burger.classList.toggle('burger--active');
   menu.classList.toggle('header__nav--active');
-
   if (burger.classList.contains('burger--active')) {
     disableScroll();
   } else {
@@ -193,8 +212,9 @@ accordions.forEach(el => {
     const self = e.currentTarget;
     const control = self.querySelector('.faq-accordion__control');
     const content = self.querySelector('.faq-accordion__content');
-    self.classList.toggle('open'); // если открыт аккордеон
+    self.classList.toggle('open');
 
+    // если открыт аккордеон
     if (self.classList.contains('open')) {
       control.setAttribute('aria-expanded', true);
       content.setAttribute('aria-hidden', false);
@@ -216,7 +236,6 @@ accordions.forEach(el => {
 /***/ (() => {
 
 ymaps.ready(init);
-
 function init() {
   //Создание карты
   const myMap = new ymaps.Map("map", {
@@ -242,11 +261,9 @@ const catalogMore = document.querySelector('.catalog__more');
 const prodModal = document.querySelector('[data-graph-target="prod-modal"] .graph-modal__content');
 let prodQuantity = 6;
 let dataLength = null;
-
 const normalPrice = str => {
   return String(str).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
 };
-
 if (catalogList) {
   const loadProducts = function () {
     let quantity = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 6;
@@ -255,11 +272,32 @@ if (catalogList) {
     }).then(data => {
       dataLength = data.length;
       catalogList.innerHTML = '';
-
       for (let i = 0; i < dataLength; i++) {
         if (i < quantity) {
           let item = data[i];
-          catalogList.innerHTML += "\n              <li class=\"catalog-list__item\">\n                <article class=\"product\">\n                  <div class=\"product__image\">\n                    <img src=\"".concat(item.mainImage, "\" alt=\"").concat(item.title, "\">\n                    <div class=\"product__btns\">\n                      <button class=\"btn-reset product__btn\" data-graph-path=\"prod-modal\" data-id=\"").concat(item.id, "\" aria-label=\"\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u043E \u0442\u043E\u0432\u0430\u0440\u0435\">\n                        <svg>\n                          <use xlink:href=\"img/sprite.svg#eye\"></use>\n                        </svg>\n                      </button>\n                      <button class=\"btn-reset product__btn\" aria-label=\"\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0442\u043E\u0432\u0430\u0440 \u0432 \u043A\u043E\u0440\u0437\u0438\u043D\u0443\">\n                        <svg>\n                          <use xlink:href=\"img/sprite.svg#cart\"></use>\n                        </svg>\n                      </button>\n                    </div>\n                  </div>\n                  <h3 class=\"product__title\">").concat(item.title, "</h3>\n                  <span class=\"product__price\">").concat(normalPrice(item.price), " \u0440</span>\n                </article>\n              </li>\n                  ");
+          catalogList.innerHTML += `
+              <li class="catalog-list__item">
+                <article class="product">
+                  <div class="product__image">
+                    <img src="${item.mainImage}" alt="${item.title}">
+                    <div class="product__btns">
+                      <button class="btn-reset product__btn" data-graph-path="prod-modal" data-id="${item.id}" aria-label="Показать информацию о товаре">
+                        <svg>
+                          <use xlink:href="img/sprite.svg#eye"></use>
+                        </svg>
+                      </button>
+                      <button class="btn-reset product__btn" aria-label="Добавить товар в корзину">
+                        <svg>
+                          <use xlink:href="img/sprite.svg#cart"></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <h3 class="product__title">${item.title}</h3>
+                  <span class="product__price">${normalPrice(item.price)} р</span>
+                </article>
+              </li>
+                  `;
         }
       }
     }).then(() => {
@@ -277,27 +315,22 @@ if (catalogList) {
       });
     });
   };
-
   loadProducts(prodQuantity);
-
   const loadModalData = function () {
     let id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     fetch('../data/data.json').then(response => {
       return response.json();
     }).then(data => {
       prodModal.innerHTML = '';
-
       for (let dataItem of data) {
         if (dataItem.id == id) ;
         console.log(dataItem);
       }
     });
   };
-
   catalogMore.addEventListener('click', e => {
     prodQuantity += 3;
     loadProducts(prodQuantity);
-
     if (prodQuantity >= dataLength) {
       catalogMore.style.display = 'none';
     } else {
@@ -366,7 +399,6 @@ const quizData = [{
     type: "textarea"
   }]
 }];
-
 const quizTemplate = function () {
   let data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   let dataLength = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -380,16 +412,43 @@ const quizTemplate = function () {
   } = options;
   const answers = data.answers.map(item => {
     if (item.type === 'checkbox') {
-      return "\n         <li class = \"quiz-question__item\">\n            <img src=\"img/sneaker.jpg\" alt=\"\">\n            <label class=\"custom-checkbox quiz-question__label\">\n               <input type=\"".concat(item.type, "\" class=\"custom-checkbox__field quiz-question__answer\" data-valid=\"false\" name=\"").concat(data.answer_alias, "\" ").concat(item.type == 'text' ? 'placeholder="Введите ваш вариант"' : '', " value=\"").concat(item.type !== 'text' ? item.answer_title : '', "\">\n               <span class=\"custom-checkbox__content\">").concat(item.answer_title, "</span>\n            </label>\n         </li>\n         ");
+      return `
+         <li class = "quiz-question__item">
+            <img src="img/sneaker.jpg" alt="">
+            <label class="custom-checkbox quiz-question__label">
+               <input type="${item.type}" class="custom-checkbox__field quiz-question__answer" data-valid="false" name="${data.answer_alias}" ${item.type == 'text' ? 'placeholder="Введите ваш вариант"' : ''} value="${item.type !== 'text' ? item.answer_title : ''}">
+               <span class="custom-checkbox__content">${item.answer_title}</span>
+            </label>
+         </li>
+         `;
     } else if (item.type === 'textarea') {
-      return "\n\t\t\t<label class=\"quiz-question__label\">\n         <textarea placeholder=\"".concat(item.answer_title, "\" class=\"quiz-question__message\"></textarea>\n\t\t\t</label>\n\t\t");
+      return `
+			<label class="quiz-question__label">
+         <textarea placeholder="${item.answer_title}" class="quiz-question__message"></textarea>
+			</label>
+		`;
     } else {
-      return "\n\t\t\t<label class=\"quiz-question__label\">\n\t\t\t\t<input type=\"".concat(item.type, "\" data-valid=\"false\" class=\"quiz-question__answer\" name=\"").concat(data.answer_alias, "\" ").concat(item.type == 'text' ? 'placeholder="Введите ваш вариант"' : '', " value=\"").concat(item.type !== 'text' ? item.answer_title : '', "\">\n\t\t\t\t<span>").concat(item.answer_title, "</span>\n\t\t\t</label>\n\t\t");
+      return `
+			<label class="quiz-question__label">
+				<input type="${item.type}" data-valid="false" class="quiz-question__answer" name="${data.answer_alias}" ${item.type == 'text' ? 'placeholder="Введите ваш вариант"' : ''} value="${item.type !== 'text' ? item.answer_title : ''}">
+				<span>${item.answer_title}</span>
+			</label>
+		`;
     }
   });
-  return "\n\t\t\t<div class=\"quiz-question\">\n\t\t\t\t<h3 class=\"quiz-question__title\">".concat(title, "</h3>\n\t\t\t\t<ul class=\"list-reset quiz-question__answers\">\n\t\t\t\t\t").concat(answers.join(''), "\n\t\t\t\t</ul>\n            <div class = \"quiz-bottom\">\n            <div class=\"quiz-question__count\">").concat(number, " \u0438\u0437 ").concat(dataLength, "</div>\n            <button type=\"button\" class=\"btn btn-reset btn--thirdly quiz-question__btn\" data-next-btn>").concat(nextBtnText, "</button>\n             </div>\n\t\t\t</div>\n\t");
+  return `
+			<div class="quiz-question">
+				<h3 class="quiz-question__title">${title}</h3>
+				<ul class="list-reset quiz-question__answers">
+					${answers.join('')}
+				</ul>
+            <div class = "quiz-bottom">
+            <div class="quiz-question__count">${number} из ${dataLength}</div>
+            <button type="button" class="btn btn-reset btn--thirdly quiz-question__btn" data-next-btn>${nextBtnText}</button>
+             </div>
+			</div>
+	`;
 };
-
 class Quiz {
   constructor(selector, data, options) {
     this.$el = document.querySelector(selector);
@@ -402,20 +461,16 @@ class Quiz {
     this.init();
     this.events();
   }
-
   init() {
     console.log('init!');
     this.$el.innerHTML = quizTemplate(this.data[this.counter], this.dataLength, this.options);
   }
-
   nextQuestion() {
     console.log('next question!');
-
     if (this.valid()) {
       if (this.counter + 1 < this.dataLength) {
         this.counter++;
         this.$el.innerHTML = quizTemplate(this.data[this.counter], this.dataLength, this.options);
-
         if (this.counter + 1 == this.dataLength) {
           document.querySelector('.quiz-question__answers').style.display = 'block';
         }
@@ -430,7 +485,6 @@ class Quiz {
       console.log('Не валидно!');
     }
   }
-
   events() {
     console.log('events!');
     this.$el.addEventListener('click', e => {
@@ -438,7 +492,6 @@ class Quiz {
         this.addToSend();
         this.nextQuestion();
       }
-
       if (e.target == document.querySelector('[data-send]')) {
         this.send();
       }
@@ -451,23 +504,19 @@ class Quiz {
             el.checked = false;
           });
         }
-
         this.tmp = this.serialize(this.$el);
       }
     });
   }
-
   valid() {
     let isValid = false;
     let textArea = this.$el.querySelector('textarea');
-
     if (textArea) {
       if (textArea.value.length > 0) {
         isValid = true;
         return isValid;
       }
     }
-
     let elements = this.$el.querySelectorAll('input');
     elements.forEach(el => {
       switch (el.nodeName) {
@@ -479,60 +528,48 @@ class Quiz {
               } else {
                 el.classList.add('error');
               }
-
             case 'checkbox':
               if (el.checked) {
                 isValid = true;
               } else {
                 el.classList.add('error');
               }
-
             case 'radio':
               if (el.checked) {
                 isValid = true;
               } else {
                 el.classList.add('error');
               }
-
           }
-
       }
     });
     return isValid;
   }
-
   addToSend() {
     this.resultArray.push(this.tmp);
   }
-
   send() {
     if (this.valid()) {
       const formData = new FormData();
-
       for (let item of this.resultArray) {
         for (let obj in item) {
           formData.append(obj, item[obj].substring(0, item[obj].length - 1));
         }
       }
-
       const response = fetch("mail.php", {
         method: 'POST',
         body: formData
       });
     }
   }
-
   serialize(form) {
     let field,
-        s = {};
+      s = {};
     let valueString = '';
-
     if (typeof form == 'object' && form.nodeName == "FORM") {
       let len = form.elements.length;
-
       for (let i = 0; i < len; i++) {
         field = form.elements[i];
-
         if (field.name && !field.disabled && field.type != 'file' && field.type != 'reset' && field.type != 'submit' && field.type != 'button') {
           if (field.type == 'select-multiple') {
             for (j = form.elements[i].options.length - 1; j >= 0; j--) {
@@ -545,12 +582,9 @@ class Quiz {
         }
       }
     }
-
     return s;
   }
-
 }
-
 window.quiz = new Quiz('.quiz-form .quiz-questions', quizData, {
   nextBtnText: "Следующий шаг",
   sendBtnText: "Отправить"
@@ -570,7 +604,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var nouislider__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(nouislider__WEBPACK_IMPORTED_MODULE_0__);
 
 const rangeSlider = document.getElementById('range-slider');
-
 if (rangeSlider) {
   nouislider__WEBPACK_IMPORTED_MODULE_0___default().create(rangeSlider, {
     start: [1850, 25768],
@@ -587,13 +620,11 @@ if (rangeSlider) {
   rangeSlider.noUiSlider.on('update', function (values, handle) {
     inputs[handle].value = Math.round(values[handle]);
   });
-
   const setRangeSlider = (i, value) => {
     let arr = [null, null];
     arr[i] = value;
     rangeSlider.noUiSlider.set(arr);
   };
-
   inputs.forEach((el, index) => {
     el.addEventListener('change', e => {
       setRangeSlider(index, e.currentTarget.value);
@@ -618,17 +649,14 @@ __webpack_require__.r(__webpack_exports__);
 
 const mobileCheck = () => {
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
   if (/android/i.test(userAgent)) {
     _vars__WEBPACK_IMPORTED_MODULE_0__["default"].htmlEl.classList.add('page--android');
     return "Android";
   }
-
   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
     _vars__WEBPACK_IMPORTED_MODULE_0__["default"].htmlEl.classList.add('page--ios');
     return "iOS";
   }
-
   return "unknown";
 };
 
@@ -652,7 +680,6 @@ const mobileCheck = () => {
     function s(a, b) {
       n.getComputedStyle || (n.getComputedStyle = function (a, b) {
         this.el = a;
-
         this.getPropertyValue = function (b) {
           var c = /(\-([a-z]){1})/g;
           "float" == b && (b = "styleFloat");
@@ -661,77 +688,67 @@ const mobileCheck = () => {
           }));
           return a.currentStyle && a.currentStyle[b] ? a.currentStyle[b] : null;
         };
-
         return this;
       });
       return n.getComputedStyle(a, null).getPropertyValue(b);
     }
-
     function t(a) {
       a = a || c.clientHeight;
       var b = u(c);
       return Math.max(Math.floor(a / b), 0);
     }
-
     function x(a) {
       return u(c) * a;
     }
-
     function u(a) {
       var b = s(a, "line-height");
       "normal" == b && (b = 1.2 * parseInt(s(a, "font-size")));
       return parseInt(b);
     }
-
     function l(a) {
       if (a.lastChild.children && 0 < a.lastChild.children.length) return l(Array.prototype.slice.call(a.children).pop());
       if (a.lastChild && a.lastChild.nodeValue && "" != a.lastChild.nodeValue && a.lastChild.nodeValue != b.truncationChar) return a.lastChild;
       a.lastChild.parentNode.removeChild(a.lastChild);
       return l(c);
     }
-
     function p(a, d) {
       if (d) {
         var e = a.nodeValue.replace(b.truncationChar, "");
         f || (h = 0 < k.length ? k.shift() : "", f = e.split(h));
         1 < f.length ? (q = f.pop(), r(a, f.join(h))) : f = null;
         m && (a.nodeValue = a.nodeValue.replace(b.truncationChar, ""), c.innerHTML = a.nodeValue + " " + m.innerHTML + b.truncationChar);
-
         if (f) {
           if (c.clientHeight <= d) if (0 <= k.length && "" != h) r(a, f.join(h) + h + q), f = null;else return c.innerHTML;
         } else "" == h && (r(a, ""), a = l(c), k = b.splitOnChars.slice(0), h = k[0], q = f = null);
-
         if (b.animate) setTimeout(function () {
           p(a, d);
         }, !0 === b.animate ? 10 : b.animate);else return p(a, d);
       }
     }
-
     function r(a, c) {
       a.nodeValue = c + b.truncationChar;
     }
-
     d = d || {};
     var n = window,
-        b = {
-      clamp: d.clamp || 2,
-      useNativeClamp: "undefined" != typeof d.useNativeClamp ? d.useNativeClamp : !0,
-      splitOnChars: d.splitOnChars || [".", "-", "\u2013", "\u2014", " "],
-      animate: d.animate || !1,
-      truncationChar: d.truncationChar || "\u2026",
-      truncationHTML: d.truncationHTML
-    },
-        e = c.style,
-        y = c.innerHTML,
-        z = "undefined" != typeof c.style.webkitLineClamp,
-        g = b.clamp,
-        v = g.indexOf && (-1 < g.indexOf("px") || -1 < g.indexOf("em")),
-        m;
+      b = {
+        clamp: d.clamp || 2,
+        useNativeClamp: "undefined" != typeof d.useNativeClamp ? d.useNativeClamp : !0,
+        splitOnChars: d.splitOnChars || [".", "-", "\u2013", "\u2014", " "],
+        animate: d.animate || !1,
+        truncationChar: d.truncationChar || "\u2026",
+        truncationHTML: d.truncationHTML
+      },
+      e = c.style,
+      y = c.innerHTML,
+      z = "undefined" != typeof c.style.webkitLineClamp,
+      g = b.clamp,
+      v = g.indexOf && (-1 < g.indexOf("px") || -1 < g.indexOf("em")),
+      m;
     b.truncationHTML && (m = document.createElement("span"), m.innerHTML = b.truncationHTML);
     var k = b.splitOnChars.slice(0),
-        h = k[0],
-        f,
-        q;
+      h = k[0],
+      f,
+      q;
     "auto" == g ? g = t() : v && (g = t(parseInt(g)));
     var w;
     z && b.useNativeClamp ? (e.overflow = "hidden", e.textOverflow = "ellipsis", e.webkitBoxOrient = "vertical", e.display = "-webkit-box", e.webkitLineClamp = g, v && (e.height = b.clamp + "px")) : (e = x(g), e <= c.clientHeight && (w = p(l(c), e)));
@@ -776,19 +793,19 @@ function applyFocusVisiblePolyfill(scope) {
     datetime: true,
     'datetime-local': true
   };
+
   /**
    * Helper function for legacy browsers and iframes which sometimes focus
    * elements like document, body, and non-interactive SVG.
    * @param {Element} el
    */
-
   function isValidFocusTarget(el) {
     if (el && el !== document && el.nodeName !== 'HTML' && el.nodeName !== 'BODY' && 'classList' in el && 'contains' in el.classList) {
       return true;
     }
-
     return false;
   }
+
   /**
    * Computes whether the given element should automatically trigger the
    * `focus-visible` class being added, i.e. whether it should always match
@@ -796,56 +813,47 @@ function applyFocusVisiblePolyfill(scope) {
    * @param {Element} el
    * @return {boolean}
    */
-
-
   function focusTriggersKeyboardModality(el) {
     var type = el.type;
     var tagName = el.tagName;
-
     if (tagName === 'INPUT' && inputTypesAllowlist[type] && !el.readOnly) {
       return true;
     }
-
     if (tagName === 'TEXTAREA' && !el.readOnly) {
       return true;
     }
-
     if (el.isContentEditable) {
       return true;
     }
-
     return false;
   }
+
   /**
    * Add the `focus-visible` class to the given element if it was not added by
    * the author.
    * @param {Element} el
    */
-
-
   function addFocusVisibleClass(el) {
     if (el.classList.contains('focus-visible')) {
       return;
     }
-
     el.classList.add('focus-visible');
     el.setAttribute('data-focus-visible-added', '');
   }
+
   /**
    * Remove the `focus-visible` class from the given element if it was not
    * originally added by the author.
    * @param {Element} el
    */
-
-
   function removeFocusVisibleClass(el) {
     if (!el.hasAttribute('data-focus-visible-added')) {
       return;
     }
-
     el.classList.remove('focus-visible');
     el.removeAttribute('data-focus-visible-added');
   }
+
   /**
    * If the most recent user interaction was via the keyboard;
    * and the key press did not include a meta, alt/option, or control key;
@@ -854,19 +862,16 @@ function applyFocusVisiblePolyfill(scope) {
    * of our keyboard modality state with `hadKeyboardEvent`.
    * @param {KeyboardEvent} e
    */
-
-
   function onKeyDown(e) {
     if (e.metaKey || e.altKey || e.ctrlKey) {
       return;
     }
-
     if (isValidFocusTarget(scope.activeElement)) {
       addFocusVisibleClass(scope.activeElement);
     }
-
     hadKeyboardEvent = true;
   }
+
   /**
    * If at any point a user clicks with a pointing device, ensure that we change
    * the modality away from keyboard.
@@ -875,11 +880,10 @@ function applyFocusVisiblePolyfill(scope) {
    * pointing device, while we still think we're in keyboard modality.
    * @param {Event} e
    */
-
-
   function onPointerDown(e) {
     hadKeyboardEvent = false;
   }
+
   /**
    * On `focus`, add the `focus-visible` class to the target if:
    * - the target received focus as a result of keyboard navigation, or
@@ -887,29 +891,24 @@ function applyFocusVisiblePolyfill(scope) {
    *   via the keyboard (e.g. a text box)
    * @param {Event} e
    */
-
-
   function onFocus(e) {
     // Prevent IE from focusing the document or HTML element.
     if (!isValidFocusTarget(e.target)) {
       return;
     }
-
     if (hadKeyboardEvent || focusTriggersKeyboardModality(e.target)) {
       addFocusVisibleClass(e.target);
     }
   }
+
   /**
    * On `blur`, remove the `focus-visible` class from the target.
    * @param {Event} e
    */
-
-
   function onBlur(e) {
     if (!isValidFocusTarget(e.target)) {
       return;
     }
-
     if (e.target.classList.contains('focus-visible') || e.target.hasAttribute('data-focus-visible-added')) {
       // To detect a tab/window switch, we look for a blur event followed
       // rapidly by a visibility change.
@@ -923,13 +922,12 @@ function applyFocusVisiblePolyfill(scope) {
       removeFocusVisibleClass(e.target);
     }
   }
+
   /**
    * If the user changes tabs, keep track of whether or not the previously
    * focused element had .focus-visible.
    * @param {Event} e
    */
-
-
   function onVisibilityChange(e) {
     if (document.visibilityState === 'hidden') {
       // If the tab becomes active again, the browser will handle calling focus
@@ -939,18 +937,16 @@ function applyFocusVisiblePolyfill(scope) {
       if (hadFocusVisibleRecently) {
         hadKeyboardEvent = true;
       }
-
       addInitialPointerMoveListeners();
     }
   }
+
   /**
    * Add a group of listeners to detect usage of any pointing devices.
    * These listeners will be added when the polyfill first loads, and anytime
    * the window is blurred, so that they are active when the window regains
    * focus.
    */
-
-
   function addInitialPointerMoveListeners() {
     document.addEventListener('mousemove', onInitialPointerMove);
     document.addEventListener('mousedown', onInitialPointerMove);
@@ -962,7 +958,6 @@ function applyFocusVisiblePolyfill(scope) {
     document.addEventListener('touchstart', onInitialPointerMove);
     document.addEventListener('touchend', onInitialPointerMove);
   }
-
   function removeInitialPointerMoveListeners() {
     document.removeEventListener('mousemove', onInitialPointerMove);
     document.removeEventListener('mousedown', onInitialPointerMove);
@@ -974,6 +969,7 @@ function applyFocusVisiblePolyfill(scope) {
     document.removeEventListener('touchstart', onInitialPointerMove);
     document.removeEventListener('touchend', onInitialPointerMove);
   }
+
   /**
    * When the polfyill first loads, assume the user is in keyboard modality.
    * If any event is received from a pointing device (e.g. mouse, pointer,
@@ -981,39 +977,38 @@ function applyFocusVisiblePolyfill(scope) {
    * This accounts for situations where focus enters the page from the URL bar.
    * @param {Event} e
    */
-
-
   function onInitialPointerMove(e) {
     // Work around a Safari quirk that fires a mousemove on <html> whenever the
     // window blurs, even if you're tabbing out of the page. ¯\_(ツ)_/¯
     if (e.target.nodeName && e.target.nodeName.toLowerCase() === 'html') {
       return;
     }
-
     hadKeyboardEvent = false;
     removeInitialPointerMoveListeners();
-  } // For some kinds of state, we are interested in changes at the global scope
+  }
+
+  // For some kinds of state, we are interested in changes at the global scope
   // only. For example, global pointer input, global key presses and global
   // visibility change should affect the state at every scope:
-
-
   document.addEventListener('keydown', onKeyDown, true);
   document.addEventListener('mousedown', onPointerDown, true);
   document.addEventListener('pointerdown', onPointerDown, true);
   document.addEventListener('touchstart', onPointerDown, true);
   document.addEventListener('visibilitychange', onVisibilityChange, true);
-  addInitialPointerMoveListeners(); // For focus and blur, we specifically care about state changes in the local
+  addInitialPointerMoveListeners();
+
+  // For focus and blur, we specifically care about state changes in the local
   // scope. This is because focus / blur events that originate from within a
   // shadow root are not re-dispatched from the host element if it was already
   // the active element in its own scope:
-
   scope.addEventListener('focus', onFocus, true);
-  scope.addEventListener('blur', onBlur, true); // We detect that a node is a ShadowRoot by ensuring that it is a
+  scope.addEventListener('blur', onBlur, true);
+
+  // We detect that a node is a ShadowRoot by ensuring that it is a
   // DocumentFragment and also has a host property. This check covers native
   // implementation and polyfill implementation transparently. If we only cared
   // about the native implementation, we could just check if the scope was
   // an instance of a ShadowRoot.
-
   if (scope.nodeType === Node.DOCUMENT_FRAGMENT_NODE && scope.host) {
     // Since a ShadowRoot is a special kind of DocumentFragment, it does not
     // have a root element to add a class to. So, we add this attribute to the
@@ -1023,20 +1018,20 @@ function applyFocusVisiblePolyfill(scope) {
     document.documentElement.classList.add('js-focus-visible');
     document.documentElement.setAttribute('data-js-focus-visible', '');
   }
-} // It is important to wrap all references to global window and document in
+}
+
+// It is important to wrap all references to global window and document in
 // these checks to support server-side rendering use cases
 // @see https://github.com/WICG/focus-visible/issues/199
-
-
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   // Make the polyfill helper globally available. This can be used as a signal
   // to interested libraries that wish to coordinate with the polyfill for e.g.,
   // applying the polyfill to a shadow root:
-  window.applyFocusVisiblePolyfill = applyFocusVisiblePolyfill; // Notify interested libraries of the polyfill's presence, in case the
+  window.applyFocusVisiblePolyfill = applyFocusVisiblePolyfill;
+
+  // Notify interested libraries of the polyfill's presence, in case the
   // polyfill was loaded lazily:
-
   var event;
-
   try {
     event = new CustomEvent('focus-visible-polyfill-ready');
   } catch (error) {
@@ -1044,10 +1039,8 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     event = document.createEvent('CustomEvent');
     event.initCustomEvent('focus-visible-polyfill-ready', false, false, {});
   }
-
   window.dispatchEvent(event);
 }
-
 if (typeof document !== 'undefined') {
   // Apply the polyfill to the global document, so that no JavaScript
   // coordination is required to use the polyfill in the top-level document:
@@ -1067,193 +1060,192 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ GraphModal)
 /* harmony export */ });
-console.log('graphmodal is ready');
 class GraphModal {
-   constructor(options) {
-      let defaultOptions = {
-         isOpen: () => { },
-         isClose: () => { },
-      }
-      this.options = Object.assign(defaultOptions, options);
-      this.modal = document.querySelector('.graph-modal');
-      this.speed = 300;
-      this.animation = 'fade';
-      this._reOpen = false;
-      this._nextContainer = false;
-      this.modalContainer = false;
-      this.isOpen = false;
-      this.previousActiveElement = false;
-      this._focusElements = [
-         'a[href]',
-         'input',
-         'select',
-         'textarea',
-         'button',
-         'iframe',
-         '[contenteditable]',
-         '[tabindex]:not([tabindex^="-"])'
-      ];
-      this._fixBlocks = document.querySelectorAll('.fix-block');
-      this.events();
-   }
+  constructor(options) {
+    let defaultOptions = {
+      isOpen: () => {},
+      isClose: () => {},
+    }
+    this.options = Object.assign(defaultOptions, options);
+    this.modal = document.querySelector('.graph-modal');
+    this.speed = 300;
+    this.animation = 'fade';
+    this._reOpen = false;
+    this._nextContainer = false;
+    this.modalContainer = false;
+    this.isOpen = false;
+    this.previousActiveElement = false;
+    this._focusElements = [
+      'a[href]',
+      'input',
+      'select',
+      'textarea',
+      'button',
+      'iframe',
+      '[contenteditable]',
+      '[tabindex]:not([tabindex^="-"])'
+    ];
+    this._fixBlocks = document.querySelectorAll('.fix-block');
+    this.events();
+  }
 
-   events() {
-      if (this.modal) {
-         document.addEventListener('click', function (e) {
-            const clickedElement = e.target.closest(`[data-graph-path]`);
-            if (clickedElement) {
-               let target = clickedElement.dataset.graphPath;
-               let animation = clickedElement.dataset.graphAnimation;
-               let speed = clickedElement.dataset.graphSpeed;
-               this.animation = animation ? animation : 'fade';
-               this.speed = speed ? parseInt(speed) : 300;
-               this._nextContainer = document.querySelector(`[data-graph-target="${target}"]`);
-               this.open();
-               return;
-            }
+  events() {
+    if (this.modal) {
+      document.addEventListener('click', function (e) {
+        const clickedElement = e.target.closest(`[data-graph-path]`);
+        if (clickedElement) {
+          let target = clickedElement.dataset.graphPath;
+          let animation = clickedElement.dataset.graphAnimation;
+          let speed = clickedElement.dataset.graphSpeed;
+          this.animation = animation ? animation : 'fade';
+          this.speed = speed ? parseInt(speed) : 300;
+          this._nextContainer = document.querySelector(`[data-graph-target="${target}"]`);
+          this.open();
+          return;
+        }
 
-            if (e.target.closest('.js-modal-close')) {
-               this.close();
-               return;
-            }
-         }.bind(this));
+        if (e.target.closest('.js-modal-close')) {
+          this.close();
+          return;
+        }
+      }.bind(this));
 
-         window.addEventListener('keydown', function (e) {
-            if (e.keyCode == 27 && this.isOpen) {
-               this.close();
-            }
+      window.addEventListener('keydown', function (e) {
+        if (e.keyCode == 27 && this.isOpen) {
+          this.close();
+        }
 
-            if (e.which == 9 && this.isOpen) {
-               this.focusCatch(e);
-               return;
-            }
-         }.bind(this));
+        if (e.which == 9 && this.isOpen) {
+          this.focusCatch(e);
+          return;
+        }
+      }.bind(this));
 
-         document.addEventListener('click', function (e) {
-            if (e.target.classList.contains('graph-modal') && e.target.classList.contains("is-open")) {
-               this.close();
-            }
-         }.bind(this));
-      }
+      document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('graph-modal') && e.target.classList.contains("is-open")) {
+          this.close();
+        }
+      }.bind(this));
+    }
 
-   }
+  }
 
-   open(selector) {
-      this.previousActiveElement = document.activeElement;
+  open(selector) {
+    this.previousActiveElement = document.activeElement;
 
-      if (this.isOpen) {
-         this.reOpen = true;
-         this.close();
-         return;
-      }
+    if (this.isOpen) {
+      this.reOpen = true;
+      this.close();
+      return;
+    }
 
-      this.modalContainer = this._nextContainer;
+    this.modalContainer = this._nextContainer;
 
-      if (selector) {
-         this.modalContainer = document.querySelector(`[data-graph-target="${selector}"]`);
-      }
+    if (selector) {
+      this.modalContainer = document.querySelector(`[data-graph-target="${selector}"]`);
+    }
+    
+    this.modalContainer.scrollTo(0, 0)
 
-      this.modalContainer.scrollTo(0, 0)
+    this.modal.style.setProperty('--transition-time', `${this.speed / 1000}s`);
+    this.modal.classList.add('is-open');
 
-      this.modal.style.setProperty('--transition-time', `${this.speed / 1000}s`);
-      this.modal.classList.add('is-open');
+    document.body.style.scrollBehavior = 'auto';
+    document.documentElement.style.scrollBehavior = 'auto';
+
+    this.disableScroll();
+
+    this.modalContainer.classList.add('graph-modal-open');
+    this.modalContainer.classList.add(this.animation);
+
+    setTimeout(() => {
+      this.options.isOpen(this);
+      this.modalContainer.classList.add('animate-open');
+      this.isOpen = true;
+      this.focusTrap();
+    }, this.speed);
+  }
+
+  close() {
+    if (this.modalContainer) {
+      this.modalContainer.classList.remove('animate-open');
+      this.modalContainer.classList.remove(this.animation);
+      this.modal.classList.remove('is-open');
+      this.modalContainer.classList.remove('graph-modal-open');
+
+      this.enableScroll();
 
       document.body.style.scrollBehavior = 'auto';
       document.documentElement.style.scrollBehavior = 'auto';
 
-      this.disableScroll();
+      this.options.isClose(this);
+      this.isOpen = false;
+      this.focusTrap();
 
-      this.modalContainer.classList.add('graph-modal-open');
-      this.modalContainer.classList.add(this.animation);
-
-      setTimeout(() => {
-         this.options.isOpen(this);
-         this.modalContainer.classList.add('animate-open');
-         this.isOpen = true;
-         this.focusTrap();
-      }, this.speed);
-   }
-
-   close() {
-      if (this.modalContainer) {
-         this.modalContainer.classList.remove('animate-open');
-         this.modalContainer.classList.remove(this.animation);
-         this.modal.classList.remove('is-open');
-         this.modalContainer.classList.remove('graph-modal-open');
-
-         this.enableScroll();
-
-         document.body.style.scrollBehavior = 'auto';
-         document.documentElement.style.scrollBehavior = 'auto';
-
-         this.options.isClose(this);
-         this.isOpen = false;
-         this.focusTrap();
-
-         if (this.reOpen) {
-            this.reOpen = false;
-            this.open();
-         }
+      if (this.reOpen) {
+        this.reOpen = false;
+        this.open();
       }
-   }
+    }
+  }
 
-   focusCatch(e) {
-      const nodes = this.modalContainer.querySelectorAll(this._focusElements);
-      const nodesArray = Array.prototype.slice.call(nodes);
-      const focusedItemIndex = nodesArray.indexOf(document.activeElement)
-      if (e.shiftKey && focusedItemIndex === 0) {
-         nodesArray[nodesArray.length - 1].focus();
-         e.preventDefault();
-      }
-      if (!e.shiftKey && focusedItemIndex === nodesArray.length - 1) {
-         nodesArray[0].focus();
-         e.preventDefault();
-      }
-   }
+  focusCatch(e) {
+    const nodes = this.modalContainer.querySelectorAll(this._focusElements);
+    const nodesArray = Array.prototype.slice.call(nodes);
+    const focusedItemIndex = nodesArray.indexOf(document.activeElement)
+    if (e.shiftKey && focusedItemIndex === 0) {
+      nodesArray[nodesArray.length - 1].focus();
+      e.preventDefault();
+    }
+    if (!e.shiftKey && focusedItemIndex === nodesArray.length - 1) {
+      nodesArray[0].focus();
+      e.preventDefault();
+    }
+  }
 
-   focusTrap() {
-      const nodes = this.modalContainer.querySelectorAll(this._focusElements);
-      if (this.isOpen) {
-         if (nodes.length) nodes[0].focus();
-      } else {
-         this.previousActiveElement.focus();
-      }
-   }
+  focusTrap() {
+    const nodes = this.modalContainer.querySelectorAll(this._focusElements);
+    if (this.isOpen) {
+      if (nodes.length) nodes[0].focus();
+    } else {
+      this.previousActiveElement.focus();
+    }
+  }
 
-   disableScroll() {
-      let pagePosition = window.scrollY;
-      this.lockPadding();
-      document.body.classList.add('disable-scroll');
-      document.body.dataset.position = pagePosition;
-      document.body.style.top = -pagePosition + 'px';
-   }
+  disableScroll() {
+    let pagePosition = window.scrollY;
+    this.lockPadding();
+    document.body.classList.add('disable-scroll');
+    document.body.dataset.position = pagePosition;
+    document.body.style.top = -pagePosition + 'px';
+  }
 
-   enableScroll() {
-      let pagePosition = parseInt(document.body.dataset.position, 10);
-      this.unlockPadding();
-      document.body.style.top = 'auto';
-      document.body.classList.remove('disable-scroll');
-      window.scrollTo({
-         top: pagePosition,
-         left: 0
-      });
-      document.body.removeAttribute('data-position');
-   }
+  enableScroll() {
+    let pagePosition = parseInt(document.body.dataset.position, 10);
+    this.unlockPadding();
+    document.body.style.top = 'auto';
+    document.body.classList.remove('disable-scroll');
+    window.scrollTo({
+      top: pagePosition,
+      left: 0
+    });
+    document.body.removeAttribute('data-position');
+  }
 
-   lockPadding() {
-      let paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
-      this._fixBlocks.forEach((el) => {
-         el.style.paddingRight = paddingOffset;
-      });
-      document.body.style.paddingRight = paddingOffset;
-   }
+  lockPadding() {
+    let paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
+    this._fixBlocks.forEach((el) => {
+      el.style.paddingRight = paddingOffset;
+    });
+    document.body.style.paddingRight = paddingOffset;
+  }
 
-   unlockPadding() {
-      this._fixBlocks.forEach((el) => {
-         el.style.paddingRight = '0px';
-      });
-      document.body.style.paddingRight = '0px';
-   }
+  unlockPadding() {
+    this._fixBlocks.forEach((el) => {
+      el.style.paddingRight = '0px';
+    });
+    document.body.style.paddingRight = '0px';
+  }
 }
 
 
